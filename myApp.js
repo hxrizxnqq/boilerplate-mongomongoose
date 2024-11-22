@@ -13,8 +13,38 @@ const personSchema = new Schema({
 
 Person = mongoose.model("Person", personSchema);
 
+// const createAndSavePerson = (done) => {
+//   let andrzejDuda = new Person({
+//     name: 'Andrzej',
+//     age: '36',
+//     favoriteFoods: ["eggs"]
+//   });
+//   andrzejDuda.save(function(err, data) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       done(null, data);
+//     }
+//   })
+// };
+
+let andrzejDuda = new Person({
+  name: 'Andrzej',
+  age: '36',
+  favoriteFoods: ["eggs", "pizda"]
+});
+
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  let yevhen = new Person({
+    name: 'Yevhen',
+    age: '12',
+    favoriteFoods: ["eggs", "pizda"]
+  });
+
+  yevhen.save(function(error, data) {
+    if(error) return done(error);
+    done(null, data);
+  })
 };
 
 const createManyPeople = (arrayOfPeople, done) => {

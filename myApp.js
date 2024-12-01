@@ -123,13 +123,14 @@ const removeManyPeople = (done) => {
   })
 };
 
-const queryChain = (done) => {
-  const foodToSearch = "burrito";
+const queryChain = function(done) {
+  var foodToSearch = "burrito";
 
-  Person.find({favoriteFoods: [foodToSearch]}).sort({name: -1}).limit(2).select({age: 0}).exec(function (err,persons) {
-      if (err) return done(err);
-      done(null, persons);
-    });
+  const findBurrito = Person.find({favoriteFoods: foodToSearch})
+      .sort({name: abc}).limit(2).select('-age')
+  findBurrito.exec((err, persons) => {
+        err ? done(err) : done(null, persons);
+      })
 };
 
 /** **Well Done !!**
